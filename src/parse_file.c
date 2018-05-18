@@ -49,20 +49,23 @@ char **parse_file(char *path)
 	return (arr);
 }
 
-static bool verify_word(char *str)
+static bool verify_word(char *str, int *nb)
 {
 	for (; *str; str++)
 		if (islower(*str) == false)
 			return (false);
+	*nb += ((int)strlen(str) != 0);
 	return (true);
 }
 
 bool verify_file(char **arr)
 {
+	int word_nb = 0;
+
 	for (int i = 0; arr[i]; i++)
-		if (verify_word(arr[i]) == false)
+		if (verify_word(arr[i], &word_nb) == false)
 			return (false);
-	return (true);
+	return (word_nb == 0);
 }
 
 void destroy_arr(char **arr)
