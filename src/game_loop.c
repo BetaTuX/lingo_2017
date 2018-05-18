@@ -71,12 +71,13 @@ static char *get_user_word(int len)
 int game_loop(char *word)
 {
 	char *str = NULL;
+	int len = (int)strlen(word);
 
 	printf(START_MSG);
 	display_word(word, NULL);
-	for (int loop = 1; 1; loop++) {
+	for (int loop = 1; loop < len + 1; loop++) {
 		printf("\nRound %i\n", loop);
-		str = get_user_word(strlen(word));
+		str = get_user_word(len);
 		if (str == NULL)
 			break;
 		else if (display_word(word, str)) {
