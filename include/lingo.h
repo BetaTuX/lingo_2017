@@ -23,5 +23,7 @@ bool verify_file(char **arr);
 void destroy_arr(char **arr);
 char **parse_file(char *path);
 int game_loop(char *word);
+int strnccnt(char *, char, int);
+bool verify_correct(char *, char *, int);
 
 #endif

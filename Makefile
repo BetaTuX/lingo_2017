@@ -15,6 +15,7 @@ SRC_FIL	=	main.c \
 		parse_file.c \
 		word_choice.c \
 		game_loop.c \
+		word_comp.c \
 
 SRC	=	$(addprefix $(SRC_DIR)/, $(SRC_FIL))
 

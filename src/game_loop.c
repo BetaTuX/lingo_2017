@@ -10,12 +10,13 @@
 #include <stdio.h>
 #include "lingo.h"
 
-static int strccnt(char *str, char c)
+int strnccnt(char *str, char c, int cap)
 {
-	for (int i = 0; str[i]; i++)
+	int tot = 0;
+	for (int i = 0; str[i] && i < cap; i++)
 		if (str[i] == c)
-			return (i);
-	return (-1);
+			tot++;
+	return (tot);
 }
 
 static bool display_word(char *word, char *user_word)
@@ -28,8 +29,7 @@ static bool display_word(char *word, char *user_word)
 		if (user_word && (user_word[i] == word[i])) {
 			printf("%c", word[i]);
 			verif++;
-		} else if (user_word && strccnt(word, user_word[i]) != i && \
-strccnt(word, user_word[i]) != -1)
+		} else if (user_word && verify_correct(word, user_word, i))
 			printf("?");
 		else
 			printf("*");
