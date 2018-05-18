@@ -12,6 +12,9 @@ NAME	=	lingo
 SRC_DIR	=	$(realpath ./src/)
 
 SRC_FIL	=	main.c \
+		parse_file.c \
+		word_choice.c \
+		game_loop.c \
 
 SRC	=	$(addprefix $(SRC_DIR)/, $(SRC_FIL))
 
@@ -19,7 +22,7 @@ OBJ	=	$(SRC:%.c=%.o)
 
 INCLUDE	=	$(realpath ./include/)
 
-CFLAGS	=	-Wall -Wextra $(INCLUDE)
+CFLAGS	=	-Wall -Wextra -I $(INCLUDE)
 
 all:	$(NAME)
 
