@@ -57,9 +57,10 @@ static char *get_user_word(int len)
 	while (1) {
 		printf(">");
 		fflush(stdout);
-		if (getline(&line, &size, stdin) <= 0)
+		if (getline(&line, &size, stdin) <= 0) {
+			free(line);
 			return (NULL);
-		else if (line_valid(line, len))
+		} else if (line_valid(line, len))
 			return (line);
 		free(line);
 		line = NULL;
